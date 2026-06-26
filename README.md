@@ -1,22 +1,47 @@
-# 🛡️ 311 Service Requests: Differential Privacy Analysis
+# 311 Service Requests: Differential Privacy Analysis
 
-## 📌 Overview
-This project focuses on **Human-Centered Data (HCD)** by analyzing **311 Service Requests** while ensuring user anonymity and data security through **Differential Privacy** techniques. The goal is to extract meaningful insights from public service requests (such as noise complaints, graffiti removal, and sanitation) without compromising the privacy of the individuals submitting them.
+Applying differential privacy techniques to Chicago 311 service request data to extract aggregate insights without compromising individual privacy.
 
-## 🔬 Methodology
-The analysis leverages Python and various data science libraries (`pandas`, `numpy`, `plotly`, `seaborn`) to preprocess, explore, and apply differential privacy to the dataset.
-Key steps include:
-- **Data Preprocessing**: Handling missing values, processing timestamps, and standardizing coordinates.
-- **Exploratory Data Analysis (EDA)**: Understanding service request types, geographic distributions (ZIP codes, wards), and request statuses.
-- **Privacy Preservation**: Implementing differential privacy algorithms to add noise to sensitive fields (like exact coordinates) while preserving aggregate statistical utility.
+## Background
 
-## 📊 Key Findings
-- The most common 311 requests include *Information Only Calls*, *Aircraft Noise Complaints*, and *Graffiti Removal*.
-- Geographic analysis reveals concentration of specific request types in certain ZIP codes (e.g., 60612, 60666).
-- Applying differential privacy successfully obscured exact locations and personal identifiers while maintaining the overall spatial and categorical trends necessary for city planning and resource allocation.
+Public service request datasets (noise complaints, graffiti removal, sanitation requests) contain location coordinates and timestamps that can reveal personal information about the people who submitted them. This project demonstrates how epsilon-delta differential privacy mechanisms can add calibrated noise to sensitive fields while preserving the statistical patterns that city planners and resource allocators need.
 
-## 📂 Repository Structure
-- `311_DP_Analysis_English.ipynb` - The primary notebook containing data preprocessing, EDA, and differential privacy implementation.
-- `IS597.ipynb` - Supplementary analysis and data processing scripts.
-- `final/` - Directory containing finalized notebooks and Python scripts (`311_dp_analysis.py`).
-- `README.md` - Project documentation.
+Built as the final project for the Human-Centered Data course at UIUC.
+
+## Dataset
+
+Chicago 311 Service Requests, covering complaint types, geographic coordinates, ZIP codes, ward numbers, request status, and timestamps. The dataset is preprocessed to handle missing values, standardize coordinates, and parse timestamps.
+
+## Methodology
+
+1. Data preprocessing: cleaning missing values, normalizing coordinates, parsing timestamps
+2. Exploratory analysis: complaint type distributions, geographic clustering by ZIP code and ward
+3. Differential privacy implementation: adding Laplacian noise to coordinates and counts at varying epsilon values
+4. Utility analysis: comparing noisy outputs against true aggregates to measure privacy-utility tradeoffs
+
+## Key Findings
+
+- The most common request types are Information Only Calls, Aircraft Noise Complaints, and Graffiti Removal
+- Requests cluster in specific ZIP codes (60612, 60666), reflecting neighborhood-level patterns
+- Differential privacy at epsilon=1.0 preserves spatial and categorical trends while obscuring exact locations
+- Lower epsilon values provide stronger privacy but degrade fine-grained geographic analysis
+
+## Repository Structure
+
+```
+311_DP_Analysis_English.ipynb   Primary notebook with EDA and privacy implementation
+IS597.ipynb                     Supplementary analysis and data processing
+final/
+  311_DP_Analysis final.ipynb   Finalized analysis with all results
+  311_DP_Analysis.ipynb         Clean working version
+  311_dp_analysis.py            Standalone Python script version
+output.png                      Sample visualization output
+```
+
+## Tech Stack
+
+Python, pandas, NumPy, Plotly, Seaborn, Matplotlib
+
+## License
+
+MIT
