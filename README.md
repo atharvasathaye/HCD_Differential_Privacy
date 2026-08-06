@@ -45,3 +45,8 @@ Python, pandas, NumPy, Plotly, Seaborn, Matplotlib
 ## License
 
 MIT
+
+## Author
+
+Atharva Sathaye
+
